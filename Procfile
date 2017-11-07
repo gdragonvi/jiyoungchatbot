@@ -1,1 +1,1 @@
-web: gunicorn {jiyoungchatbot}.wsgi --log-file -
+web: gunicorn jiyoungchatbot.wsgi --log-file -
