@@ -1,0 +1,1 @@
+web: gunicorn {jiyoungchatbot}.wsgi --log-file -
