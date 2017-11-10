@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 import json
-from blueforge.apis.facebook import CreateFacebookApiClient, RequestDataFormat, Recipient, Message
+from blueforge.apis.facebook import CreateFacebookApiClient, RequestDataFormat, Recipient, Message, QuickReply, QuickReplyTextItem
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -30,9 +30,13 @@ def web_hook(request):
                     if text == '안녕':
                         send_message = Message(text='반가워')
                     elif text =='나이':
-                        send_message = Message(text='10')
+                        quick_replies = [QuickReplyTextItem(title='10살', payload='10', image_url=None),
+                                         QuickReplyTextItem(title='20살', payload='20', image_url=None)]
+                        send_message = Message(text='알아 맞춰봐~ ', quick_replies=QuickReply(quick_reply_items=quick_replies))
                     else:
-                        req.send_message(RequestDataFormat(recipient=Recipient(recipient_id=receiver),
+                        send_message = Message(text=text)
+
+                    req.send_message(RequestDataFormat(recipient=Recipient(recipient_id=receiver),
                                                            message=send_message))
         return JsonResponse(data)
     return HttpResponse('Failed to request', status=404)
