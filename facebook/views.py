@@ -32,7 +32,7 @@ def web_hook(request):
                     elif text =='나이':
                         send_message = Message(text='10')
                     else:
-                        send_message = Message(text=send_message)
+                        send_message = Message(text='error')
 
                     req.send_message(RequestDataFormat(recipient=Recipient(recipient_id=receiver),
                                                            message=send_message))
