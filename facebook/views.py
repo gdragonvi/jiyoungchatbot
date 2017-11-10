@@ -36,7 +36,7 @@ def web_hook(request):
                         text = message['message']['text']
                         if text == '안녕':
                             send_message = Message(text='용수얌 반가워ㅎㅎ난 지영챗봇이얌')
-                        elif text =='내 나이는?':
+                        elif text =='몇살':
                             quick_replies = [QuickReplyTextItem(title='10살', payload='10', image_url=None),
                                              QuickReplyTextItem(title='20살', payload='20', image_url=None)]
                             send_message = Message(text='알아 맞춰봐~ ', quick_replies=QuickReply(quick_reply_items=quick_replies))
