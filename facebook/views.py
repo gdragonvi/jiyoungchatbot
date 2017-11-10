@@ -13,11 +13,10 @@ access_token = 'insert_page_access_token'
 def web_hook(request):
     print(request)
     if request.method == 'GET':
-        if (request.GET.get('hub.mode') == 'subscribe' and request.GET.get(
-                'hub.verify_token') == verify_token) and request.GET.get('hub.challenge'):
+        if request.GET.get('hub.verify_token') == verify_token:
             return HttpResponse(request.GET.get('hub.challenge'))
     elif request.method == 'POST':
         print(request.body)
         data = json.loads(request.body.decode('UTF-8'))
         return JsonResponse(data)
-        return HttpResponse('Failed to request', status=404)
+    return HttpResponse('Failed to request', status=404)
