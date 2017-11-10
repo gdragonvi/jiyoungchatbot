@@ -26,15 +26,22 @@ def web_hook(request):
             for message in entry['messaging']:
                 receiver = message['sender']['id']
                 if 'message' in message:
-                    text = message['message']['text']
-                    if text == '안녕':
-                        send_message = Message(text='반가워')
-                    elif text =='나이':
-                        quick_replies = [QuickReplyTextItem(title='10살', payload='10', image_url=None),
-                                         QuickReplyTextItem(title='20살', payload='20', image_url=None)]
-                        send_message = Message(text='알아 맞춰봐~ ', quick_replies=QuickReply(quick_reply_items=quick_replies))
+                    if 'quick_reply' in  message['message']:
+                        payload = message['message']['quick_replay']['payload']
+                        if payload == '10':
+                            send_message = Message(text='맞음')
+                        elif payload == '20':
+                            send_message = Message(text='틀림')
                     else:
-                        send_message = Message(text=text)
+                        text = message['message']['text']
+                        if text == '안녕':
+                            send_message = Message(text='반가워')
+                        elif text =='나이':
+                            quick_replies = [QuickReplyTextItem(title='10살', payload='10', image_url=None),
+                                             QuickReplyTextItem(title='20살', payload='20', image_url=None)]
+                            send_message = Message(text='알아 맞춰봐~ ', quick_replies=QuickReply(quick_reply_items=quick_replies))
+                        else:
+                            send_message = Message(text=text)
 
                     req.send_message(RequestDataFormat(recipient=Recipient(recipient_id=receiver),
                                                            message=send_message))
