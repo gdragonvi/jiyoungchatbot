@@ -30,7 +30,7 @@ def web_hook(request):
                         payload = message['message']['quick_replay']['payload']
                         if payload == '10':
                             send_message = Message(text='맞음')
-                        elif payload == '20':
+                        elif payload == '20':   
                             send_message = Message(text='틀림')
                     else:
                         text = message['message']['text']
