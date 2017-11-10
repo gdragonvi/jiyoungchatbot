@@ -27,7 +27,14 @@ def web_hook(request):
                 receiver = message['sender']['id']
                 if 'message' in message:
                     text = message['message']['text']
+                    if text == '누구야':
+                        send_message = Message(text='나야')
+                    elif text =='나이':
+                        send_message = Message(text='10')
+                    else:
+                        send_message = Message(text='에러')
+
                     req.send_message(RequestDataFormat(recipient=Recipient(recipient_id=receiver),
-                                                       message=Message(text=text)))
+                                                           message=send_message))
         return JsonResponse(data)
     return HttpResponse('Failed to request', status=404)
