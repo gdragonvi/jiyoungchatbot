@@ -27,10 +27,10 @@ def web_hook(request):
                 receiver = message['sender']['id']
                 if 'message' in message:
                     if 'quick_reply' in  message['message']:
-                        payload = message['message']['quick_replay']['payload']
+                        payload = message['message']['quick_reply']['payload']
                         if payload == '10':
                             send_message = Message(text='맞음')
-                        elif payload == '20':   
+                        elif payload == '20':
                             send_message = Message(text='틀림')
                     else:
                         text = message['message']['text']
