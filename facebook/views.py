@@ -27,8 +27,8 @@ def web_hook(request):
                 receiver = message['sender']['id']
                 if 'message' in message:
                     text = message['message']['text']
-                    if text == '누구야':
-                        send_message = Message(text='나야')
+                    if text == '안녕':
+                        send_message = Message(text='반가워')
                     elif text =='나이':
                         send_message = Message(text='10')
                     else:
