@@ -25,7 +25,7 @@ SECRET_KEY = 'r(42!_b+td#6vyj3_7$u4^&&s8!fmaf7fb=k**@+rr#x+(ku_#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['jiyoungchatbot.herokuapp.com']
 
 
 # Application definition
