@@ -28,22 +28,20 @@ def web_hook(request):
                 if 'message' in message:
                     if 'quick_reply' in  message['message']:
                         payload = message['message']['quick_reply']['payload']
-                        if payload == '10':
-                            send_message = Message(text='맞음')
-                        elif payload == '20':
-                            send_message = Message(text='틀림')
+                        if payload == '1':
+                            send_message = Message(text='1. 평일 아침 8시 이전 주문건까지 대부분 당일 배송됩니다.2. 8시 이후 주문건은 다음날 배송됩니다. 금요일 8시 이후 주문건은 다음주 월요일에 배송됩니다.3. 브라운백 커피는 CJ 대한통운을 통해 커피를 보내드립니다.쇼핑몰에서 구매하신 경우, 택배 출고시 문자메시지로 송장 번호를 안내해드립니다. 문자로 받으신 송장번호를 복사하셔서 아래 CJ 대한통운 배송조회 사이트에서 조회해주시면 됩니다.4. 콜드브루와 원두를 같이 주문하시면 각각 다른 곳에서 배송되어, 택배를 두개로 나눠 받으십니다.더 궁금하신 점은 언제든 문의주세요. 감사합니다^^')
+                        elif payload == '2':
+                            send_message = Message(text='1. 샘플 신청 : 아래 링크를 눌러 샘플 발송에 필요한 정보를 입력해주시면 됩니다.맛 보시고 궁금하신 사항이나 추가 요청 사항이 있으시면 언제든 문의주세요! 2. 샘플 배송 : 신청해주신 후 2~3일 이내 배송이 시작됩니다. 신청이 들어온 순서대로 순차적으로 배송해드리오니 조금만 기다려주세요^^')
                     else:
                         text = message['message']['text']
+                        send_message = Message(text='안녕하세요. 브라운백 커피입니다. 선택을 입력해주신 후 원하시는 버튼을 클릭해주세요')
                         if text == '안녕':
-                            send_message = Message(text='용수얌 반가워ㅎㅎ난 지영챗봇이얌')
-                        elif text =='몇살':
-                            quick_replies = [QuickReplyTextItem(title='10살', payload='10', image_url=None),
-                                             QuickReplyTextItem(title='20살', payload='20', image_url=None)]
+                            send_message = Message(text='안녕하세요. 브라운백커피입니다. 친구 추가해 주셔서 감사합니다.앞으로 다양한 소식과 혜택/정보를 메시지로 받으실 수 있습니다.브라운백커피를 친구추가해주셔서 감사합니다!궁금하신 점은 본 공식 카카오톡 아이디 / 공식 전화 1644-1530 로 연락 주시면 언제든지 친절히 답변드리겠습니다!최고의 원두를 정말 좋은 가격으로 드리겠습니다. 오늘도 좋은 하루 되세요 ^^')
+                        elif text =='선택':
+                            quick_replies = [QuickReplyTextItem(title='제품 배송 일정', payload='1', image_url=None),
+                                             QuickReplyTextItem(title='샘플 신청 방법과 샘플 배송', payload='2', image_url=None)]
                             send_message = Message(text='알아 맞춰봐~ ', quick_replies=QuickReply(quick_reply_items=quick_replies))
-                        elif text =='ㅎㅇ':
-                            send_message = Message(text='ㅎㅇㅎㅇ')
-                        else:
-                            send_message = Message(text='ㅎㅅㅎ사랑행')
+
 
                     req.send_message(RequestDataFormat(recipient=Recipient(recipient_id=receiver),
                                                            message=send_message))
