@@ -40,8 +40,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/facebook/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="42" column="72" lean-forward="false" selection-start-line="42" selection-start-column="72" selection-end-line="42" selection-end-column="72" />
+            <state relative-caret-position="194">
+              <caret line="36" column="152" lean-forward="false" selection-start-line="36" selection-start-column="152" selection-end-line="36" selection-end-column="152" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -377,7 +377,14 @@
       <option name="project" value="LOCAL" />
       <updated>1510650699304</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fsf">
+      <created>1510650782439</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1510650782439</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -710,8 +717,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/facebook/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="42" column="72" lean-forward="false" selection-start-line="42" selection-start-column="72" selection-end-line="42" selection-end-column="72" />
+        <state relative-caret-position="194">
+          <caret line="36" column="152" lean-forward="false" selection-start-line="36" selection-start-column="152" selection-end-line="36" selection-end-column="152" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
