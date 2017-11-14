@@ -40,7 +40,7 @@ def web_hook(request):
                         elif text =='선택':
                             quick_replies = [QuickReplyTextItem(title='제품 배송 일정', payload='1', image_url=None),
                                              QuickReplyTextItem(title='샘플 신청 방법과 샘플 배송', payload='2', image_url=None)]
-                            send_message = Message(text='알아 맞춰봐~ ', quick_replies=QuickReply(quick_reply_items=quick_replies))
+                            send_message = Message(text='원하시는 버튼을 선택해주세요', quick_replies=QuickReply(quick_reply_items=quick_replies))
 
 
                     req.send_message(RequestDataFormat(recipient=Recipient(recipient_id=receiver),
