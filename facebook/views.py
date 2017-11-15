@@ -21,7 +21,8 @@ def web_hook(request):
     elif request.method == 'POST':
         print(request.body)
         data = json.loads(request.body.decode('UTF-8'))
-
+        send_message = Message(text='안녕하세요. 브라운백 커피입니다.\n궁금하신 점은 본 공식 카카오톡 아이디 / 공식 전화 1644-1530 로 연락 주시면 언제든지 친절히 답변드리겠습니다! \n\n"선택"을 입력해주세요.')
+        
         for entry in data['entry']:
             for message in entry['messaging']:
                 receiver = message['sender']['id']
@@ -34,7 +35,7 @@ def web_hook(request):
                             send_message = Message(text='1. 샘플 신청 : 아래 링크를 눌러 샘플 발송에 필요한 정보를 입력해주시면 됩니다.\n맛 보시고 궁금하신 사항이나 추가 요청 사항이 있으시면 언제든 문의주세요!\n\n2. 샘플 배송 : 신청해주신 후 2~3일 이내 배송이 시작됩니다. \n신청이 들어온 순서대로 순차적으로 배송해드리오니 조금만 기다려주세요^^ \n\n더 궁금하신 점은 언제든 문의주세요. 감사합니다^^')
                     else:
                         text = message['message']['text']
-                        send_message = Message(text='안녕하세요. 브라운백 커피입니다.\n궁금하신 점은 본 공식 카카오톡 아이디 / 공식 전화 1644-1530 로 연락 주시면 언제든지 친절히 답변드리겠습니다! \n\n"선택"을 입력해주세요.')
+
 
                         if text =='선택':
                             quick_replies = [QuickReplyTextItem(title='제품 배송 일정', payload='1', image_url=None),
