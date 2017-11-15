@@ -21,8 +21,8 @@ def web_hook(request):
     elif request.method == 'POST':
         print(request.body)
         data = json.loads(request.body.decode('UTF-8'))
-        send_message = Message(text='안녕하세요. 브라운백 커피입니다.\n궁금하신 점은 본 공식 카카오톡 아이디 / 공식 전화 1644-1530 로 연락 주시면 언제든지 친절히 답변드리겠습니다! \n\n"선택"을 입력해주세요.')
-        
+
+
         for entry in data['entry']:
             for message in entry['messaging']:
                 receiver = message['sender']['id']
@@ -42,7 +42,7 @@ def web_hook(request):
                                              QuickReplyTextItem(title='샘플 신청 방법과 샘플 배송', payload='2', image_url=None)]
                             send_message = Message(text='원하시는 버튼을 선택해주세요', quick_replies=QuickReply(quick_reply_items=quick_replies))
                         else :
-                            send_message = Message(text='"선택"을 입력해주세요.')
+                            send_message = Message(text='안녕하세요. 브라운백 커피입니다.\n궁금하신 점은 본 공식 카카오톡 아이디 / 공식 전화 1644-1530 로 연락 주시면 언제든지 친절히 답변드리겠습니다! \n\n"선택"을 입력해주세요.')
 
 
                     req.send_message(RequestDataFormat(recipient=Recipient(recipient_id=receiver),
