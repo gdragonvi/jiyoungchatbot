@@ -35,12 +35,13 @@ def web_hook(request):
                     else:
                         text = message['message']['text']
                         send_message = Message(text='안녕하세요. 브라운백 커피입니다.\n궁금하신 점은 본 공식 카카오톡 아이디 / 공식 전화 1644-1530 로 연락 주시면 언제든지 친절히 답변드리겠습니다! \n\n"선택"을 입력해주세요.')
-                        if text == '안녕':
-                            send_message = Message(text='안녕하세요. 브라운백커피입니다. 친구 추가해 주셔서 감사합니다.앞으로 다양한 소식과 혜택/정보를 메시지로 받으실 수 있습니다.브라운백커피를 친구추가해주셔서 감사합니다!궁금하신 점은 본 공식 카카오톡 아이디 / 공식 전화 1644-1530 로 연락 주시면 언제든지 친절히 답변드리겠습니다!최고의 원두를 정말 좋은 가격으로 드리겠습니다. 오늘도 좋은 하루 되세요 ^^')
-                        elif text =='선택':
+
+                        if text =='선택':
                             quick_replies = [QuickReplyTextItem(title='제품 배송 일정', payload='1', image_url=None),
                                              QuickReplyTextItem(title='샘플 신청 방법과 샘플 배송', payload='2', image_url=None)]
                             send_message = Message(text='원하시는 버튼을 선택해주세요', quick_replies=QuickReply(quick_reply_items=quick_replies))
+                        else :
+                            send_message = Message(text='"선택"을 입력해주세요.')
 
 
                     req.send_message(RequestDataFormat(recipient=Recipient(recipient_id=receiver),
